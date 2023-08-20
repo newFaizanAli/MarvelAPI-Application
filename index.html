@@ -15,32 +15,40 @@
 </head>
 
 <body>
-  <div id="Render">
-    <h3>Marvel API Application</h3>
 
-    <div class="container fluid">
-      <div class="row d-flex justify-content-center">
+    <!-- Seaction - 1 -->
+
+    <div class="Search-Section row">
+      <div class="d-flex justify-content-center flex-wrap">
        
-           <div class="col-12 col-lg-3">
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                </div>
-              </div>
-            </div>
+
+        <div class="dropdown mt-2">
+          <select class=" p-1 btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" id="select">
+            <ul class="dropdown-menu">
+              <option class="dropdown-item" value="">--Choose an option--</option>
+              <option class="dropdown-item" value="characters">Characters</option>
+              <option class="dropdown-item" value="series">Series</option>
+              <option class="dropdown-item" value="comics">Comics</option>
+            </ul>
+            
+          </select>
+        </div>
+       
+
+        <div class=" m-2">
+          <div class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" id="input_value" aria-label="Search">
+            <button class="btn btn-outline-success" onclick="SearchData()">Search</button>
           </div>
         </div>
-        </div>
+      </div>
     </div>
+  
 
+    <!-- Section - 2 -->
+
+  <div id="Render">
+    <h3>Marvel API Application</h3>
   </div>
 
 
