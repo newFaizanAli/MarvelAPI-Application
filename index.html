@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="Render">
+        <h3>Marvel API Application</h3>
+        
+        <!-- <div class="container fluid">
+              <div class="row d-flex cols-row-3">
+                <div class="col-3">
+                    <h3>col-1</h3>
+                </div>
+                <div class="col-3">
+                    <h3>col-1</h3>
+                </div>
+                <div class="col-3">
+                    <h3>col-1</h3>
+                </div>
+              </div>
+
+        </div> -->
+        
+    </div>
+    
+
+    <script>
+        var ele = document.getElementById('Render')
+        
+          function Connection(){
+            
+            
+            let layout = "";
+            
+            layout += `<h3>Marvel API App</h3>`
+            ele.innerHTML = "";
+            ele.innerHTML = layout;
+          } 
+
+
+          window.addEventListener("load", (event) => {
+            // Connection()
+          })
+    </script>
+</body>
+</html>
