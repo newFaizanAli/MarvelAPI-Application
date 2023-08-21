@@ -1,0 +1,18 @@
+body{
+    margin: 0;
+    padding: 0;
+    inset: 0;
+}
+
+
+.main{
+    height: 100%;
+    width: 100%;
+   
+    background: linear-gradient(45deg ,#d2001a, #7462ff);
+}
+.card:hover{
+  cursor: pointer;
+  inset: -5px;
+}
+

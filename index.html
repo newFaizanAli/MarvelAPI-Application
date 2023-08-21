@@ -11,44 +11,58 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js"></script>
 </head>
 
 <body>
 
-    <!-- Seaction - 1 -->
 
+
+  <div class="main container-fluid">
+
+
+  <!-- Seaction - 1 -->
     <div class="Search-Section row">
       <div class="d-flex justify-content-center flex-wrap">
-       
 
+        <!-- DropDown -->
         <div class="dropdown mt-2">
-          <select class=" p-1 btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" id="select">
+          <select class=" p-1 btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" id="select" onchange="getData()">
             <ul class="dropdown-menu">
               <option class="dropdown-item" value="">--Choose an option--</option>
               <option class="dropdown-item" value="characters">Characters</option>
               <option class="dropdown-item" value="series">Series</option>
               <option class="dropdown-item" value="comics">Comics</option>
+              
             </ul>
-            
+
           </select>
         </div>
-       
 
+        <!-- Search -->
         <div class=" m-2">
           <div class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" id="input_value" aria-label="Search">
-            <button class="btn btn-outline-success" onclick="SearchData()">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Search" id="input_value" aria-label="Search" onchange="SearchData()">
+
           </div>
         </div>
       </div>
     </div>
-  
+
 
     <!-- Section - 2 -->
-
-  <div id="Render">
-    <h3>Marvel API Application</h3>
+    <h3 class="text-center">Marvel API Application</h3>
+    <div id="Render">
+     
+    </div>
+     <div class="d-flex justify-content-center">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination" id="pagination">
+            <!-- li Elements Create -->
+        </ul>
+    </nav>
+     </div>
   </div>
 
 
