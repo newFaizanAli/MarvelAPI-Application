@@ -16,3 +16,26 @@ body{
   inset: -5px;
 }
 
+.splide__slide img{
+  height: 50%;
+  overflow: hidden;
+}
+
+.title{
+ background: linear-gradient(25deg ,#d2001a, #7462ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.view-btn{
+  background: linear-gradient(45deg ,#d2001a, #7462ff);
+  border: none;
+  border-radius: 6px;
+}
+
+.footer_items a{
+    text-decoration: none;
+    color: #d2001a;
+    border-bottom: none;
+    
+}
