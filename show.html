@@ -17,69 +17,53 @@
 
 <body>
 
-
-
   <div class="main container-fluid pb-3">
 
 
-  <!-- Seaction - 1 -->
+    <!-- Seaction - 1 -->
     <div class="Search-Section row">
       <div class="d-flex justify-content-center flex-wrap">
 
         <!-- DropDown -->
         <div class="dropdown m-3" id="dropdownDiv">
           <select class="p-2 border rounded-2 btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-          id="select" onchange="Open_Page()">
-          <ul class="dropdown-menu">
-            <option class="dropdown-item" value="">--Choose an option--</option>
-            <option class="dropdown-item" value="characters">Characters</option>
-            <option class="dropdown-item" value="series">Series</option>
-            <option class="dropdown-item" value="comics">Comics</option>
-          </ul>
-        </select>
-        </div>
-
-        <!-- Search -->
-        <div class="m-3">
-          <div class="d-flex" role="search">
-            <input class="form-control me-2 p-2" type="search" placeholder="Search" id="input_value" aria-label="Search" onchange="SearchData()">
-
-          </div>
+            id="select" onchange="Open_Page()">
+            <ul class="dropdown-menu">
+              <option class="dropdown-item" value="">--Choose an option--</option>
+              <option class="dropdown-item" value="characters">Characters</option>
+              <option class="dropdown-item" value="series">Series</option>
+              <option class="dropdown-item" value="comics">Comics</option>
+            </ul>
+          </select>
         </div>
       </div>
     </div>
 
+    <h3 class="text-center text-white col-12"><a href="index.html" style="text-decoration: none; color: white;">Marvel
+        API Application</a></h3>
 
-    <!-- Section - 2 -->
-    <h3 class="text-center text-white col-12"><a href="index.html" style="text-decoration: none; color: white;">Marvel API Application</a></h3>
-    <div id="Render">
-     
+    <div class="container bg-white border rounded-3">
+      <div class="row justify-content-center p-5">
+        <div class="card m-sm-3 m-3" id="showitem">
+
+        </div>
+      </div>
     </div>
-     <div class="d-flex justify-content-center">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination" id="pagination">
-            <!-- li Elements Create -->
-        </ul>
-    </nav>
-     </div>
+    <!-- Footer Section -->
+    <div class="row bg-white m-2 border rounded-2 m-3">
 
-
-     <div class="row bg-white m-2 border rounded-2 m-3 ">
-      
       <div class="col-5">
         <h1 class="h1 text-center title">Marvel API APP</h1>
       </div>
       <div class="footer_items col-6 d-flex flex-wrap justify-content-between m-2 p-0">
         <a href="index.html">Home</a>
         <a href="item.html?categ=comics">Comics</a>
-        <a href="item.html?categ=character">Character</a>
+        <a href="item.html?categ=characters">Character</a>
         <a href="item.html?categ=series">Series</a>
       </div>
 
+    </div>
   </div>
-  </div>
-
-
 </body>
 
 </html>

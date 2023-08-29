@@ -23,27 +23,36 @@ let SearchData = async () => {
   }
 };
 
-
-//Open Page 
+//Open Page
 
 let Open_Page = () => {
   let selected = document.getElementById("select").value;
   console.log(selected);
-  window.open(`/item.html?id=${selected}`,"_self")
-}
+  window.open(`item.html?categ=${selected}`, "_self");
+};
 
+// Open Item
+
+let Open_Item = () => {
+  window.open(`item.html?categ=${selected}`, "_self");
+};
+
+// Show Specific Element
+let ShowItem = (id) => {
+  window.open(`show.html?id=${id}/${categ}`, "_self");
+};
 
 //URL Params
 const url = window.location.search;
 console.log(url);
 const urlParams = new URLSearchParams(url);
-const id = urlParams.get('id')
+const categ = urlParams.get("categ");
+const itemID = urlParams.get("id")
 
 let getData = async () => {
-  let result = await FetchingData(id, 10 , 20)
+  let result = await FetchingData(categ, 10, 20);
   RenderElements(result.data.results);
 };
-
 
 //Render Elements
 let RenderElements = async (res) => {
@@ -62,7 +71,7 @@ let RenderElements = async (res) => {
     }....</p>`;
     layout += `</div>`;
     layout += `<div class="d-flex justify-content-center align-self-center">`;
-    layout += `<button type="button" class="btn btn-warning ">More Info</button>`;
+    layout += `<button type="button" class="btn btn-warning" onClick="ShowItem(${ele.id})">More Info</button>`;
     layout += `</div>`;
     layout += ` </div>`;
   });
@@ -73,12 +82,52 @@ let RenderElements = async (res) => {
   ele.innerHTML = layout;
 };
 
+let RenderShowElement = async(res) => {
+  let id = itemID.split('/')
+  console.log(id[0], id[1]);
+  let result = await FetchingData(id[1], 0, 90);
+    let data = result.data.results;
+ 
+    let search_data = await data.filter((ele) => {
+      return ele.id == id[0]
+    });
+    console.log(search_data);
+  
+  
+
+  let ele = document.getElementById("showitem");
+  let layout = "";
+  layout += `<div class="row g-0">`;
+  layout += `<div class="col-md-4 p-3">`;
+
+  search_data.forEach((ele) => {
+    layout += `<img src="${ele.thumbnail.path}.jpg" class="img-fluid rounded-start" alt="...">`;
+    layout += `</div>`;
+    layout += `<div class="col-md-8">`;
+    layout += `<div class="card-body m-3">`;
+    layout += `<h1 class="title card-title">${ele.name ? ele.name : ele.title}</h1>`;
+    layout += `<p class="card-text">${
+      ele.description ? ele.description : `Description not found`
+    }....</p>`;
+    layout += `<a class="view-btn p-2 text-white" href="${ele.urls[0].url}" style="text-decoration: none;">More Info</a>`
+    layout += `</div>`;
+    
+  })
+  
+
+  layout += `</div>`;
+  layout += `</div>`;
+
+  ele.innerHTML = layout;
+
+  
+};
 
 let Set_Slider = () => {
-  var splide = new Splide('.splide', {
-    type: 'loop',
+  var splide = new Splide(".splide", {
+    type: "loop",
     perPage: 4,
-    lazyLoad: 'nearby',
+    lazyLoad: "nearby",
     perMove: 1,
     breakpoints: {
       400: {
@@ -86,26 +135,27 @@ let Set_Slider = () => {
       },
       800: {
         perPage: 2,
-      }
+      },
     },
   });
 
   splide.mount();
-}
+};
 
-let Card_Slider = async (ElementID, value) => {
+let Card_Slider = async (res, ElementID, value) => {
   let ele = document.getElementById(ElementID);
-  let res = await FetchingData(value, 20, 6)
-  .then((res) => {return res.data.results})
-  console.log(res);
-    // .then((res) => console.log(res));
+  // let res = await FetchingData(value, 20, 6).then((res) => {
+  //   return res.data.results;
+  // });
+  // console.log(res);
+  // .then((res) => console.log(res));
   let layout = "";
   await res.forEach((ele) => {
     layout += `<li class="splide__slide" id="splide__slide">`;
     layout += ` <div class="card m-2" style="width: 18rem;">`;
     layout += `<div class="card-body">`;
     layout += `<img src="${ele.thumbnail.path}.jpg" class="card-img-top border rounded-4" alt="..."
-    style="height:50%; overflow: hidden";>`
+    style="height:50%; overflow: hidden";>`;
     layout += `<h5 class="card-title text-center">${ele.name}</h5>`;
     layout += ` </div>`;
     layout += `</div>`;
@@ -114,14 +164,23 @@ let Card_Slider = async (ElementID, value) => {
 
   ele.innerHTML = layout;
   //Set Slider
-  Set_Slider()
-
+  Set_Slider();
 };
 
-let Load_Characters = () => {
-  Card_Slider("Character_list" ,"characters");
+let Load_Characters = async() => {
+  let res = await FetchingData("characters", 20, 6).then((res) => {
+    return res.data.results;
+  });
+  console.log(res);
+  Card_Slider(res, "Character_list");
+};
+
+let Func_Load = () => {
+const itemID = urlParams.get("id")
+  categ ? getData() : itemID ? RenderShowElement() :  Load_Characters();
+
 };
 
 window.addEventListener("load", (event) => {
-  id ? getData() : Load_Characters()
+  Func_Load();
 });
