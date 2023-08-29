@@ -9,7 +9,7 @@ let FetchingData = async (value, offset, limit) => {
 let SearchData = async () => {
   let input = document.getElementById("input_value").value.toLowerCase();
   if (id) {
-    let result = await FetchingData(id, 0, 90);
+    let result = await FetchingData(categ, 0, 90);
     let data = result.data.results;
     let serach_data = await data.filter((ele) => {
       return ele.title
